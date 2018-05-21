@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的自定义动画</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $("div").css({
+                "display": "none",
+                "height": "200px",
+                "width": "300px",
+                "background": "gold"
+            });
+
+            $("button:eq(0)").click(function () {
+                //自定义 div 的动画
+                //参数1: prop 属性
+                //参数2: speed 动画时长
+                //参数3:
+                //参数4:
+                $("div").show();
+                $("div").animate({
+                    "width": "500px",
+                    "height": "600px"
+                    /*自定义动画不支持背景颜色的动画, 支持, 需要使用jQuery.Color()插件*/
+                    /*"background": "green"*/
+                }, 6000);
+            });
+
+            $("button:eq(1)").click(function () {
+                // 停止动画
+                //参数1: 设置为true, 则清空动画队列. 立即结束动画, 后面所有的动画都不再执行. 默认值为false
+                //参数2: 设置为true, 让当前正在执行的动画立即执行完成, 后面的动画继续执行, 最后重置show和hide的原始样式,调用回调函数等. 默认为false
+                $("div").stop(false, true);
+            });
+        });
+    </script>
+</head>
+<body>
+<button>自定义动画</button>
+<button>stop停止动画</button>
+<div></div>
+</body>
+</html>

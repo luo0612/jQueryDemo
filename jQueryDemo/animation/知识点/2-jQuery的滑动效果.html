@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的滑动效果</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //设置 div 的默认样式
+            $("div").css({
+                "display": "none",
+                "height": "200px",
+                "width": "300px",
+                "background": "gold"
+            });
+
+            $("input[type='button']").click(function () {
+                //让 div 以下拉的方式显示出来
+                $("div").slideDown();
+            });
+            $("button:first").click(function () {
+                //让 div 以上拉的方式隐藏
+                $("div").slideUp();
+            });
+
+            $("button:last").click(function () {
+                //让 div 进行下拉显示和上拉隐藏的切换
+                $("div").slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="下拉"/>
+<!--<button>下拉</button>-->
+<button>上拉</button>
+<button>切换</button>
+<div></div>
+</body>
+</html>

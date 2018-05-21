@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右下角的弹出广告</title>
+    <style>
+        .ad {
+            /*固定布局*/
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 230px;
+            height: 120px;
+            /*设置背景图片*/
+            background-image: url(images/ad.jpg);
+            /*隐藏*/
+            display: none;
+        }
+
+        /*后代选择器*/
+        .ad span {
+            /*绝对布局*/
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 18px;
+            background-image: url(images/h.jpg);
+        }
+    </style>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".ad")
+                .slideDown("normal")
+                .slideUp("slow")
+                .fadeIn(1000)
+                .children("span")
+                .click(function () {
+                    $(this).parent().fadeOut();
+                });
+        });
+    </script>
+</head>
+<body>
+<div class="ad">
+    <span></span>
+</div>
+</body>
+</html>

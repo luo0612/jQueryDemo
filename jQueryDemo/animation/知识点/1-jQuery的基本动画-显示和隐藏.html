@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的基本动画-显示和隐藏</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div").css({
+                "display": "none",
+                "height": "200px",
+                "width": "300px",
+                "background": "gold"
+            });
+            $("button").eq(0)
+                .click(function () {
+                    //让 div 显示出来
+                    //show()
+
+                    //动画时长:
+                    //Number参数: 毫秒值, 设置多少毫秒后显示出来
+                    //$("div").show(3000);
+                    //String参数: 设置预定的三种速度, slow, normal, fast
+                    //$("div").show("fast");
+
+                    //Function参数: 动画执行完成之后, 执行的函数, 只执行一次
+                    $("div").show(2000, function () {
+                        //alert("show动画执行完毕")
+                        $("div").hide(1000);
+                    });
+                });
+            $("button:last")
+                .click(function () {
+                    //让 div 隐藏
+                    //hide()
+                    $("div").hide();
+                });
+        });
+    </script>
+</head>
+<body>
+<button>显示</button>
+<button>隐藏</button>
+<div></div>
+</body>
+</html>
