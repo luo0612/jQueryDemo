@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的常用的DOM操作</title>
+    <style>
+        p {
+            background: gray;
+            height: 300px;
+        }
+    </style>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //设置属性
+            $("#id").click(function () {
+                $(this).attr("title", "动态设置的属性");
+            });
+
+            //获取属性
+            $("#idAttr").click(function () {
+                var attr = $("#btn").attr("title");
+                console.log(attr);
+            });
+
+            //移除属性
+            $("#removeAttr").click(function () {
+                $("#btn").removeAttr("title");
+            });
+
+            //设置值
+            //有一个参数的时候, 为设置值
+            $("#setValue").click(function () {
+                $("#text").val("动态设置的值");
+            });
+
+            //获取值
+            //没有参数的时候, 为获取值
+            $("#getValue").click(function () {
+                $("#text").val();
+            });
+
+            //设置html的内容
+            $("#setHtml").click(function () {
+                //会清空原本div中的内容
+                // $("div").html("div里面的html内容");
+
+                $("div").html("<p>div里面的 p 元素</p>")
+            });
+
+            //获取html的内容
+            $("#getHtml").click(function () {
+                var content = $("div").html();
+                console.log(content)
+            });
+
+            //设置文本内容
+            $("#setText").click(function () {
+                $("div").text("动态创建的文本内容");
+            });
+
+            //获取文本内容
+            $("#getText").click(function () {
+                var content = $("div").text();
+                console.log(content);
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn">设置属性</button>
+<button id="getAttr">获取属性</button>
+<button id="removeAttr">移除属性</button>
+<button id="setValue">设置值</button>
+<button id="getValue">获取值</button>
+<button id="setHtml">设置Html的内容</button>
+<button id="getHtml">获取Html的内容</button>
+<button id="setText">设置文本内容</button>
+<button id="getText">获取文本内容</button>
+<div><input type="text" id="text"></div>
+</body>
+</html>

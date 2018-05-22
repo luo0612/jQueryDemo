@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery操作样式</title>
+    <style>
+        .divItem {
+            background: #000;
+            color: white;
+        }
+
+        .item {
+            background: #FFF;
+            color: black;
+        }
+    </style>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //css
+            //设置一个属性
+            $("li").css("font-size", "18px");
+
+            //设置多个属性
+            $("li").css({
+                "background": "yellow",
+                "color": "black"
+            });
+
+            //获取属性
+            var fontSize = $("li").css("font-size");
+            console.log(fontSize);
+
+            //给所有的 li 元素添加样式
+            //给选定的元素添加类样式, 注意: 样式名字没有 . (点)
+            $("li").addClass("divItem");
+
+            //给所有的 li 元素移除指定样式
+            $("li").removeClass("divItem");
+            //移除所有的 li 元素所有的样式
+            $("li").removeClass();
+
+            //给所有的 li 元素切换样式
+            $("#btn").click(function () {
+                $("li").toggleClass("item")
+            });
+
+            //判断是否有样式
+            var hasClass = $("li").hasClass("item");
+            if (hasClass) {
+                console.log("有 item 样式")
+            } else {
+                console.log("没有 item 样式");
+            }
+
+            //index()方法
+            $("li").click(function () {
+                //.index(): 获取到当前这个元素的序号
+                console.log("序号: "+$(this).index());
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="btn">切换样式</button>
+<ul>
+    <li>元素1</li>
+    <li>元素2</li>
+    <li>元素3</li>
+    <li>元素4</li>
+    <li>元素5</li>
+    <li>元素6</li>
+    <li>元素7</li>
+    <li>元素8</li>
+</ul>
+</body>
+</html>
