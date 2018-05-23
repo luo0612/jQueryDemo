@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery操作节点</title>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+
+            $("div").css({
+                "background": "pink"
+            });
+
+            //动态设置高度
+            $("button:eq(0)").click(function () {
+                //$("div").height(300);
+                //$("div").height("300");
+                $("div").height("300px");
+            });
+
+            //获取高度
+            $("button:eq(1)").click(function () {
+                var height = $("div").height();
+                console.log(height);
+            });
+
+            //设置宽度
+            $("button:eq(2)").click(function () {
+                $("div").width(300);
+            });
+
+            //获取宽度
+            $("button:eq(3)").click(function () {
+                var width = $("div").width();
+                console.log(width);
+            });
+
+            //对比CSS
+            $("button:eq(4)").click(function () {
+                console.log("height()方式获取的结果是: " + $("div").height());
+                console.log("css('height')方法获取的结果是: " + $("div").css("height"));
+            });
+        });
+    </script>
 </head>
 <body>
-
+<button>设置高度</button>
+<button>获取高度</button>
+<button>设置宽度</button>
+<button>获取宽度</button>
+<button>对比CSS</button>
+<div></div>
 </body>
 </html>

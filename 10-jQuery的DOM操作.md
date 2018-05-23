@@ -14,6 +14,46 @@
 
 #### jQuery操作属性
 
+1. 设置属性
+
+		$("div").attr("title","value");
+
+2. 获取属性
+
+		var attr = $("div").attr("title");
+		console.log(attr);
+
+3. 移除属性
+
+		$("div").removeAttr("title");
+
+4. 设置值
+
+		$("div").val("value");
+
+5. 获取值
+
+		var value = $("div").val();
+		console.log(value);
+
+6. 设置HTML的内容
+
+		$("div").html("<p>动态的 p 元素</p>");
+		会清空原本 div 中的内容
+
+7. 获取HTML的内容
+
+		var content = $("div").html();
+
+8. 设置文本内容
+
+		$("div").text("动态创建的文本");
+
+9. 获取文本内容
+
+		var content = $("div").text();
+		console.log(content);
+
 #### jQuery操作节点
 
 **内部插入节点**
@@ -91,3 +131,56 @@
 #### jQuery操作元素
 
 **高度和宽度**
+
+1. 设置高度
+
+		$("div").height("300px");
+
+2. 获取高度
+
+		var height = $("div").height();
+        console.log(height);
+
+3. 设置宽度
+
+		$("div").width(300);
+
+4. 获取宽度
+
+		var width = $("div").width();
+        console.log(width);
+
+5. 对比CSS
+
+		 console.log("height()方式获取的结果是: " + $("div").height()); // 300 Number类型
+         console.log("css('height')方法获取的结果是: " + $("div").css("height")); //300px String类型
+
+**坐标值**
+
+1. 设置坐标值 offset, 设置值后变成相对定位
+
+		$("div").offset({
+			"top":"topValue",
+			"left":"leftValue"
+		});
+
+2. 获取坐标值 offset
+
+		$("div").offset().top;
+		$("div").offset().left;
+
+3. 获取坐标值 position, 只能获取不能设置
+
+		$("div").position().top;
+		$("div").position().left;
+
+**滚动条**
+
+1. 相对于滚动条的顶部偏移
+
+		$("div").scrollTop();
+
+2. 相对于滚动条的左部偏移
+
+		$("div").scrollLeft();
+         
