@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的事件解绑</title>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //绑定事件
+            $("div").on("click mouseenter", "h1:eq(1)", function () {
+                alert($(this).html());
+            });
+
+            //bind事件的解绑, unbind
+            //delegate事件的解绑, undelegate
+            //on事件的解绑, off
+            $("div").off("click")
+
+        });
+    </script>
+</head>
+<body>
+<button>绑定两个事件</button>
+<div>
+    <p>我是p元素</p>
+    <h1>我是h1元素1</h1>
+    <h1>我是h1元素2</h1>
+</div>
+<ul>
+    <li>我是li元素1</li>
+    <li>我是li元素2</li>
+    <li>我是li元素3</li>
+    <li>我是li元素4</li>
+    <li>我是li元素5</li>
+    <li>我是li元素6</li>
+    <li>我是li元素7</li>
+    <li>我是li元素8</li>
+    <li>我是li元素9</li>
+    <li>我是li元素10</li>
+</ul>
+</body>
+</html>

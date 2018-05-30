@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的事件</title>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //绑定两个事件
+            // $("button").click(function () {
+            //     alert("我是click事件")
+            // }).mouseenter(function () {
+            //     alert("我是mouseenter事件")
+            // });
+
+            //bind绑定多个事件
+            // $("button").bind("click mouseenter", function () {
+            //     alert("我是bind绑定多个事件");
+            // });
+
+            //bind绑定多个事件, 分别处理不同的逻辑
+            // $("button").bind({
+            //     "click":function () {
+            //         alert("我是bind绑定多个不同事件");
+            //     },
+            //     "mouseenter":function () {
+            //         alert("我是bind绑定多个不同事件");
+            //     }
+            // });
+
+            //bind绑定事件, 传递参数
+            // $("button").bind("click", {a: true}, function (event) {
+            //     var data = event.data;
+            //     var value = data.a;
+            //     alert(value)
+            // });
+
+            //one事件, 只绑定一次
+            // $("button").one("click", function () {
+            //     alert("我是one事件");
+            // });
+
+            //给所有的li绑定事件
+            // $("li").bind("click",function () {
+            //    alert($(this).html());
+            // });
+
+            //事件委托, 委托给父元素
+            //使用事件冒泡
+            // $("ul").delegate("li", "click", function () {
+            //     alert($(this).html());
+            // });
+
+            //on 推荐使用
+            // $("ul").on("click", "li", function () {
+            //     alert($(this).html());
+            // });
+
+            $("div").on("click", "h1:eq(1)", function () {
+                //this: 当前触发事件的元素
+                alert($(this).html());
+            });
+        });
+    </script>
+</head>
+<body>
+<button>绑定两个事件</button>
+<div>
+    <p>我是元素</p>
+    <h1>我是h1元素</h1>
+    <h1>我是h1元素</h1>
+</div>
+<ul>
+    <li>我是li1</li>
+    <li>我是li2</li>
+    <li>我是li3</li>
+    <li>我是li4</li>
+    <li>我是li5</li>
+    <li>我是li6</li>
+    <li>我是li7</li>
+    <li>我是li8</li>
+    <li>我是li9</li>
+    <li>我是li10</li>
+</ul>
+</body>
+</html>
