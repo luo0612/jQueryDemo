@@ -10,11 +10,21 @@
                 console.log(event);
                 event.stopPropagation();//阻止事件冒泡
                 event.preventDefault();//阻止默认行为
-                event.type;//事件的类型
-                event.which;//鼠标的案件类型:左1,中2,右3
+                event.type;//事件的类型: click dbclick
+                console.log(event.type);
+                event.which;//鼠标的按键类型:左1,中2,右3
                 //keydown(): 键盘的按下的事件
-                event.keyCode;//获取键盘上的按键
-                event.target;//事件参数的源头
+                event.keyCode;//获取键盘上的按键, 输出键盘的编码
+                event.currentTarget;//当前DOM对象, 等同于this
+                event.target;//事件参数的源头, 真正产生事件的控件 重点
+                event.pageX;//鼠标位置距离X轴的距离
+                event.pageY;//鼠标位置距离Y轴的距离
+
+            });
+
+            $(window).click(function (event) {
+                //鼠标的按键类型:左1,中2,右3
+                console.log(event.which);
             });
         });
     </script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五角星的案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .comment {
+            color: red;
+            /* font-size: 0;*/
+            /*设置字符间距*/
+            /*letter-spacing: -13px;*/
+            /*设置单词间距 I am a coder*/
+            /* word-spacing: -13px;*/
+        }
+
+        /*后代选择器*/
+        .comment li {
+            /*左浮动*/
+            float: left;
+            /*有空隙, 是因为li之间有换行, 在父控件中
+            设置文字大小font-size:0,
+            或者设置字符间距:letter-spacing,
+            或者单词间距:word-spacing*/
+            /* display: inline-block; 非脱标*/
+            font-size: 40px;
+        }
+
+    </style>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            var selected = "★";
+            var none = "☆";
+            //1. 给所有的li标签绑定事件
+            $(".comment").on("mouseenter", "li", function (event) {
+                //prevAll: 前面所有的兄弟节点
+                //$(this).text(selected).prevAll().text(selected);//已经指向前面的兄弟节点
+                //$(this).nextAll().text(none);
+                //当执行的jQuery链式编程, 把断掉的链再连上
+                //end(): 结束之前的链式编程, 回调原点
+                $(this).text(selected).prevAll().text(selected).end().nextAll().text(none);
+
+            })
+            //2. 记录一下用户点击的五角星
+                .on("click", "li", function () {
+                    $(this).addClass("clicked").siblings().removeClass("clicked");
+                })
+                //3. 当移开评分控件的时候, 把click(包括自己)之前的五角星全部变成实心的, 后面全部变成空心的
+                .on("mouseleave", function () { //离开整个ul控件
+                    //进行重置
+                    console.log($(".clicked"));
+
+
+                    var clickedArr = $(".clicked");//返回的数组
+                    if (clickedArr.length === 0) {
+                        //返回所有的li标签数组, 并设置文本内容
+                        //包含有隐式迭代, 遍历所有的li标签, 执行text()方法
+                        $(".comment li").text(none);
+                        var content = $(".comment li").text();//默认返回第一个li标签的内容
+                        console.log(content);
+                    } else {
+                        clickedArr.text(selected).prevAll().text(selected)
+                            .end().nextAll().text(none);
+                    }
+                });
+
+
+            //each()函数: 遍历
+            //index: li标签的索引
+            //element: 当前li标签
+            $(".comment li").each(function (index, element) {
+                console.log("index: " + index + ", element: " + element);
+                //把DOM元素转换成jQuery对象
+                var originText = $(element).text();
+                $(element).text(originText + ":" + index);
+            });
+            //全局遍历
+            $.each($(".comment li"), function (index, element) {
+                console.log("index: " + index + ", element: " + element);
+                //把DOM元素转换成jQuery对象
+                var originText = $(element).text();
+                $(element).text(originText + ":" + index);
+            });
+
+            //map()函数: 返回map()函数执行后的数组
+            var liArray = $("li").map(function (index, element) {
+                return $(element).text() + "map";
+            });
+
+            //注意: 全局的map函数和上面的参数顺序是反的
+            liArray = $.map($("li"), function (element, index) {
+                return $(element).text() + index;
+            });
+
+            $("li").click(function () {
+                $(this).data("clicked", true);
+                $(this).data("clicked");
+            });
+
+        });
+    </script>
+</head>
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+</html>

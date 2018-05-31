@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的插件</title>
+    <script src="../../jquery-3.3.1.js"></script>
+    <script>
+        //给全局$对象扩展一个方法
+        $.log = function (param) {
+            console.log(new Date());
+        };
+
+        //扩展一个普通的jQuery对象的方法
+        $.fn.log = function () {
+            console.log($(this).text())
+        };
+
+        $(function () {
+            $("div").log();
+        });
+    </script>
+</head>
+<body>
+<div>文本内容</div>
+</body>
+</html>
